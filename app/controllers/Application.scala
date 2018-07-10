@@ -100,8 +100,10 @@ class Application @Inject() (wsClient: WSClient, cache: CacheApi) (implicit ec: 
   }
 
   def options(path: String) = CorsAction {
-    Ok.withHeaders(ACCESS_CONTROL_ALLOW_HEADERS -> Seq(AUTHORIZATION, CONTENT_TYPE, "Target-URL").mkString(","))
-    Ok.withHeaders(ACCESS_CONTROL_ALLOW_METHODS -> "POST, GET, OPTIONS, PATCH")
+    Ok.withHeaders(
+      ACCESS_CONTROL_ALLOW_HEADERS -> Seq(AUTHORIZATION, CONTENT_TYPE, "Target-URL").mkString(","),
+      ACCESS_CONTROL_ALLOW_METHODS -> "POST, GET, OPTIONS, PATCH"
+    )
   }
 
 }
